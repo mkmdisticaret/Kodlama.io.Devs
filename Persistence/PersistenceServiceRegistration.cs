@@ -12,7 +12,12 @@ namespace Persistence
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<BaseDbContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("KodlamaIoDevsConnectionString")));
+            services.AddScoped<IOperationClaimRepository, OperationClaimRepository>();
             services.AddScoped<IProLangRepository, ProLangRespository>();
+            services.AddScoped<IProTechnologyRepository, ProTechnologyRepository>();
+            services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+            services.AddScoped<IUserOperationClaimRepository, UserOperationRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             return services;
         }
     }
