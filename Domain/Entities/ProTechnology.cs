@@ -2,10 +2,9 @@
 
 namespace Domain.Entities
 {
-    public class ProLang : Entity
+    public class ProTechnology:Entity
     {
         public string Name { get; set; }
-
-        public ICollection<ProTechnology> ProTechnologies { get; set; }
+        public ProLang ProLang { get; set; }
     }
 }
