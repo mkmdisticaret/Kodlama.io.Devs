@@ -1,4 +1,5 @@
 ﻿using Application.Features.ProLangs.Rules;
+using Application.Features.ProTecnologies.Rules;
 using Core.Application.Pipelines.Validation;
 using FluentValidation;
 using MediatR;
@@ -16,6 +17,7 @@ namespace Application
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddScoped<ProLangBusinessRules>();
+            services.AddScoped<ProTechnologyBusinessRules>();
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
             return services;

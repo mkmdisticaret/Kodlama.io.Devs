@@ -1,5 +1,4 @@
-﻿using Application.Features.ProLangs.Abstracts;
-namespace Application.Features.ProLangs.Dtos
+﻿namespace Application.Features.ProLangs.Dtos
 {
     public class UpdatedProLangDto : ProLangDtoBase
     { }

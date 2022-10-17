@@ -1,4 +1,4 @@
-﻿namespace Application.Features.ProLangs.Abstracts
+﻿namespace Application.Features.ProLangs.Dtos
 {
     public abstract class ProLangDtoBase
     {
