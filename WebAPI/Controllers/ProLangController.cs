@@ -11,7 +11,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProLangsController : BaseController
+    public class ProLangController : BaseController
     {
         [HttpPost("add")]
         public async Task<IActionResult> Add([FromBody] CreateProLangCommand createProLangCommand)

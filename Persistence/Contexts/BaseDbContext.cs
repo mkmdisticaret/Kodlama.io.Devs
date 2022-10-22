@@ -19,6 +19,8 @@ namespace Persistence.Contexts
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
         public DbSet<RefreshToken> RefreshTokens{ get; set; }
+        public DbSet<Developer> Developers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ProLang>(p =>
@@ -36,7 +38,14 @@ namespace Persistence.Contexts
                 p.HasIndex(k => k.Name).IsUnique();
                 p.HasOne(k => k.ProLang).WithMany(k => k.ProTechnologies).HasForeignKey(k => k.ProLangId);
             });
-
+            modelBuilder.Entity<Developer>(developer =>
+            {
+                developer.ToTable("Developers").HasKey(d => d.Id);
+                developer.Property(d => d.Id).HasColumnName("Id");
+                developer.Property(d => d.UserId).HasColumnName("UserId");
+                developer.Property(d => d.GitHubAddres).HasColumnName("GitHubAddres");
+                developer.HasOne(d => d.User);
+            });
         }
     }
 }
