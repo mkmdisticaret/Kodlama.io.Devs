@@ -1,5 +1,7 @@
-﻿using Application.Features.ProLangs.Rules;
+﻿using Application.Features.Auths.Rules;
+using Application.Features.ProLangs.Rules;
 using Application.Features.ProTecnologies.Rules;
+using Application.Services.AuthService;
 using Core.Application.Pipelines.Validation;
 using FluentValidation;
 using MediatR;
@@ -18,8 +20,11 @@ namespace Application
 
             services.AddScoped<ProLangBusinessRules>();
             services.AddScoped<ProTechnologyBusinessRules>();
+            services.AddScoped<AuthBusinessRules>();
+
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+            services.AddScoped<IAuthService, AuthManager>();
             return services;
         }
     }

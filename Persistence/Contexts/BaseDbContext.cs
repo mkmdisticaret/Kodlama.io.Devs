@@ -15,7 +15,7 @@ namespace Persistence.Contexts
 
         public DbSet<ProLang> ProLangs { get; set; }
         public DbSet<ProTechnology> ProTechnologies { get; set; }
-        public DbSet<User> User { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
         public DbSet<RefreshToken> RefreshTokens{ get; set; }
