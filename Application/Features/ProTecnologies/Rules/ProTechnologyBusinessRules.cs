@@ -20,7 +20,7 @@ namespace Application.Features.ProTecnologies.Rules
         public async Task ProTechnologyNameCanNotBeDuplicateWhenAdded(string name)
         {
             var proTechnology = await _proTechnologyRepository.GetAsync(p => p.Name == name);
-            if (proTechnology != null && name == proTechnology.Name)
+            if (proTechnology != null)
             {
                 throw new BusinessException("Program technology is exists.");
             }

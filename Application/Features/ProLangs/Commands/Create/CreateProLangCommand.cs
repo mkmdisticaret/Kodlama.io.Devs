@@ -26,7 +26,7 @@ namespace Application.Features.ProLangs.Commands.Create
 
             public async Task<CreatedProLangDto> Handle(CreateProLangCommand request, CancellationToken cancellationToken)
             {
-                await _proLangBusinessRules.ProLangNameCanNotBeDuplicate(request.Name);
+                await _proLangBusinessRules.ProLangNameCanNotBeDuplicateWhenAdded(request.Name);
 
                 ProLang mappedProLang = _mapper.Map<ProLang>(request);
                 ProLang createdProLang = await _proLangRepository.AddAsync(mappedProLang);

@@ -14,14 +14,24 @@ namespace Application.Features.ProLangs.Rules
             _proLangRepository = proLangRepository;
         }
 
-        public async Task ProLangNameCanNotBeDuplicate(string name)
+        public async Task ProLangNameCanNotBeDuplicateWhenAdded(string name)
         {
             var proLang = await _proLangRepository.GetAsync(p => p.Name == name);
-            if (proLang != null && name == proLang.Name)
+            if (proLang != null)
             {
                 throw new BusinessException(ProLangMessages.Exists);
             }
         }
+
+        public async Task ProLangNameCanNotBeDuplicateWhenUpdated(ProLang proLang)
+        {
+            var proLangAtDb = await _proLangRepository.GetAsync(p => p.Name == proLang.Name);
+            if (proLangAtDb != null && proLangAtDb.Id != proLang.Id)
+            {
+                throw new BusinessException(ProLangMessages.Exists);
+            }
+        }
+
         public void ProLangShouldExists(ProLang proLang)
         {
             if (proLang == null)

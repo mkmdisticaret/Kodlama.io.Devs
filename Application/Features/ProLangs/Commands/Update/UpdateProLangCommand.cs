@@ -31,7 +31,7 @@ namespace Application.Features.ProLangs.Commands.Update
                 var proLang = await _proLangRepository.GetAsync(p => p.Id == request.Id);
                 
                 _proLangBusinessRules.ProLangShouldExists(proLang);
-                await _proLangBusinessRules.ProLangNameCanNotBeDuplicate(request.Name);
+                await _proLangBusinessRules.ProLangNameCanNotBeDuplicateWhenUpdated(proLang);
 
                 _mapper.Map( request,proLang);
                 var updatedProLang= await _proLangRepository.UpdateAsync(proLang);
